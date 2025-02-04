@@ -1,101 +1,88 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import React, { useState } from "react";
+import "@/app/Home/Home.css";
+
+const Home = () => {
+  const [search, setSearch] = useState("");
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+
+  const openModal = (item: any) => {
+    setSelectedItem(item);
+  };
+
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+      <div>
+        <section
+            className="hero text-center bg-cover"
+            style={{ backgroundImage: "url('/assets/images/img_6.png')" }}
+        >
+          <div className="home-container">
+            <input
+                type="text"
+                className="form-control search-input"
+                value={search}
+                onChange={handleSearchChange}
+                placeholder="Search for equipment, green space, or fountain"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          </div>
+
+          <h1 className="mt-24 text-white text-5xl font-bold mb-12">Discover the Green Heart of Paris</h1>
+          <p className="hero-subtitle">Explore our wide range of</p>
+          <p className="hero-subtitle">
+            green spaces, fountains, and essential urban equipment.
+          </p>
+          <div className="buttons">
+            <a href="/some-link" className="button">
+              Learn More
+            </a>
+            <a href="/another-link" className="button">
+              Get Started
+            </a>
+          </div>
+        </section>
+
+        <section className="features-section text-center">
+          <h2 className="section-title">What We Offer</h2>
+          <div className="feature-cards">
+            <a href="/green-spaces" className="feature-card">
+              <i className="fa fa-tree"></i>
+              <h3>Green Spaces</h3>
+              <p>Discover lush parks and gardens around the city.</p>
+            </a>
+            <a href="/fontaines" className="feature-card">
+              <i className="fa fa-tint"></i>
+              <h3>Fountains</h3>
+              <p>Explore the beautiful water features scattered across Paris.</p>
+            </a>
+            <a href="/equipements" className="feature-card">
+              <i className="fa fa-tools"></i>
+              <h3>Equipment</h3>
+              <p>Find essential public equipment like benches and recycling bins.</p>
+            </a>
+          </div>
+        </section>
+
+        <section className="testimonial-section text-center">
+          <h2 className="section-title">What People Are Saying</h2>
+          <div className="testimonial-cards">
+            <div className="testimonial-card">
+              <p>"This platform helped me find amazing green spaces to relax in Paris!"</p>
+              <p><strong>- Emma</strong></p>
+            </div>
+            <div className="testimonial-card">
+              <p>"The fountains map is a life-saver on hot days. Such a great idea!"</p>
+              <p><strong>- Lucas</strong></p>
+            </div>
+          </div>
+        </section>
+      </div>
   );
-}
+};
+
+export default Home;

@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'Nexa';
+    src: url('@/public/assets/fonts/Nexa-Regular/Nexa-Regular.woff2') format('woff2'),
+    url('@/public/assets/fonts/Nexa-Regular/Nexa-Regular.woff') format('woff'),
+    url('@/public/assets/fonts/Nexa-Regular/Nexa-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Nexa';
+    src: url('@/public/assets/fonts/Nexa-Bold/Nexa-Bold.woff2') format('woff2'),
+    url('@/public/assets/fonts/Nexa-Bold/Nexa-Bold.woff') format('woff'),
+    url('@/public/assets/fonts/Nexa-Bold/Nexa-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
