@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { BiListUl, BiX } from "react-icons/bi";
-import styles from "./Navbar.module.css";
+import styles from "../styles/Navbar.module.css";
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);

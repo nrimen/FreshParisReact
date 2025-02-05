@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import "@/app/Home/Home.css";
+import "@/app/styles/Home.css";
 
 const Home = () => {
   const [search, setSearch] = useState("");
