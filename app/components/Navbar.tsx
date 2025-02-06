@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { BiListUl, BiX } from "react-icons/bi";
-import styles from "../styles/Navbar.module.css";
+import "../styles/navbar.css";
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -33,7 +33,7 @@ const Navbar = () => {
     }, []);
 
     return (
-        <header className={`fixed top-0 left-0 w-full bg-white shadow-md z-50 ${styles.navbar}`}>
+        <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 navbar">
             <div className="container mx-auto flex items-center justify-between p-4">
                 {/* Logo */}
                 <Link href="/">
