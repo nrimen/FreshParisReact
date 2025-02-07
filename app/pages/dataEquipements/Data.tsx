@@ -3,8 +3,9 @@
 
 import React, {useState, useEffect, useMemo, useCallback} from "react";
 import "../../styles/datas.css";
-import {FormControl, InputLabel, Select, MenuItem, TextField} from "@mui/material";
+import {FormControl, InputLabel, Select, MenuItem, TextField, Box, CircularProgress} from "@mui/material";
 import {Equipement} from "@/app/models/equipement";
+import { useRouter } from 'next/navigation'
 
 const DataComponent = () => {
     const [equipements, setEquipements] = useState<Equipement[]>([]);
@@ -17,6 +18,7 @@ const DataComponent = () => {
     const [filterStatutOuverture, setFilterStatutOuverture] = useState('');
     const [filterPayant, setFilterPayant] = useState('');
     const [debouncedSearch, setDebouncedSearch] = useState('');
+    const router = useRouter(); // ✅ Hook de navigation
 
     useEffect(() => {
         const handler = setTimeout(() => {
@@ -89,8 +91,17 @@ const DataComponent = () => {
         setPage((prev) => Math.max(prev - 1, 0));
     }, []);
 
-    if (loading) return <p>Loading...</p>;
+    const handleRowClick = (id: string) => {
+        router.push(`/pages/dataEquipements/${id}`);
+    };
 
+    if (loading) {
+        return (
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                <CircularProgress />
+            </Box>
+        )
+    }
     const start = page * limit + 1;
     const end = Math.min((page + 1) * limit, totalCount);
     return (
@@ -173,7 +184,10 @@ const DataComponent = () => {
                     </thead>
                     <tbody>
                     {filteredEquipements.map((equipement) => (
-                        <tr key={equipement.identifiant}>
+                        <tr key={equipement.identifiant}
+                            className="cursor-pointer hover:bg-gray-100 transition"
+                            onClick={() => handleRowClick(equipement.identifiant)} // ✅ Ajout du gestionnaire de clic
+                        >
                             <td className="border p-2">{equipement.nom}</td>
                             <td className="border p-2">{equipement.adresse}</td>
                             <td className="border p-2">{equipement.type}</td>
